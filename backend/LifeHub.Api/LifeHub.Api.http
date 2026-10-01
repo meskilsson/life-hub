@@ -1,6 +1,36 @@
-@LifeHub.Api_HostAddress = http://localhost:5209
+@HostAddress = http://localhost:5209
 
-GET {{LifeHub.Api_HostAddress}}/weatherforecast/
+GET {{HostAddress}}
 Accept: application/json
 
 ###
+POST {{HostAddress}}/api/WeightEntries
+Content-Type: application/json
+
+{
+  "weightKg": 96.5,
+  "recordedAt": "2026-09-22T20:35:00Z"
+}
+###
+GET {{HostAddress}}/api/WeightEntries
+
+###
+GET {{HostAddress}}/api/WeightEntries/2
+###
+GET {{HostAddress}}/api/WeightEntries/999
+###
+
+PUT {{HostAddress}}/api/WeightEntries/1
+Content-Type: application/json
+
+{
+  "weightKg": 94,
+  "recordedAt": "2026-10-01T20:35:00Z"
+}
+
+###
+DELETE {{HostAddress}}/api/WeightEntries/1/hard
+
+###
+//Soft Delete
+DELETE {{HostAddress}}/api/WeightEntries/3
