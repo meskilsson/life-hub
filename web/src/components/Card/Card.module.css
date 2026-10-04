@@ -1,0 +1,52 @@
+.card {
+    max-width: 100%;
+    border-radius: 1rem;
+    padding: 1rem;
+    padding: var(--padding-lg);
+    background: var(--color-surface)
+}
+
+.sm {
+    width: 16rem;
+}
+
+.md {
+    width: 24rem;
+}
+
+.lg {
+    width: 32rem;
+}
+
+.xl {
+    width: 40rem;
+}
+
+.default {
+    border: 1px solid var(--color-muted-light);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.primary {
+    background: var(--color-blue);
+    box-shadow: 0 4px 12px rgba(143, 185, 217, 0.25);
+}
+
+.secondary {
+    background: var(--color-yellow);
+    box-shadow: 0 4px 12px rgba(232, 207, 106, 0.25);
+}
+
+.ghost {
+    background: transparent;
+    border: 1px solid var(--color-muted-light);
+    box-shadow: none;
+}
+
+.danger {
+    border: 1px solid var(--color-danger);
+}
+
+.default:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
