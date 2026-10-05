@@ -47,6 +47,69 @@
     border: 1px solid var(--color-danger);
 }
 
+.vertical-lines {
+    background: transparent;
+    border-left: 1px solid var(--color-muted-light);
+    border-right: 1px solid var(--color-muted-light);
+    border-radius: 0;
+}
+
+.horizontal-lines {
+    background: transparent;
+    border-top: 1px solid var(--color-muted-light);
+    border-bottom: 1px solid var(--color-muted-light);
+    border-radius: 0;
+}
+
+.vertical-lines-sm {
+    position: relative;
+    border-radius: 0;
+    background: transparent;
+}
+
+.vertical-lines-sm::before,
+.vertical-lines-sm::after {
+    content: "";
+    position: absolute;
+    top: 20%;
+    bottom: 20%;
+    width: 1px;
+    background-color: var(--color-muted-light);
+}
+
+.vertical-lines-sm::before {
+    left: 0;
+}
+
+.vertical-lines-sm::after {
+    right: 0;
+}
+
+
+.horizontal-lines-sm {
+    position: relative;
+    background: transparent;
+    border-radius: 0;
+}
+
+.horizontal-lines-sm::before,
+.horizontal-lines-sm::after {
+    content: "";
+    position: absolute;
+    left: 20%;
+    right: 20%;
+    height: 1px;
+    background-color: var(--color-muted-light)
+}
+
+.horizontal-lines-sm::before {
+    top: 0;
+}
+
+.horizontal-lines-sm::after {
+    bottom: 0;
+}
+
 .default:hover {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
