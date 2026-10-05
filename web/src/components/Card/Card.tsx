@@ -3,7 +3,7 @@ import type { HTMLAttributes, ReactNode } from "react";
 
 type CardProps = HTMLAttributes<HTMLDivElement> & {
     size?: "sm" | "md" | "lg";
-    variant?: "default" | "primary" | "secondary" | "danger" | "ghost";
+    variant?: "default" | "primary" | "secondary" | "danger" | "ghost" | "vertical-lines" | "horizontal-lines" | "vertical-lines-sm" | "horizontal-lines-sm";
     children: ReactNode;
 };
 

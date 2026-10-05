@@ -1,13 +1,13 @@
 import styles from './HomePage.module.css';
-import Card from '../components/Card/Card';
-import Button from '../components/Button/Button';
+import Card from '../../components/Card/Card';
+import Button from '../../components/Button/Button';
 
 
 export default function HomePage() {
     return (
         <div className={styles.layout}>
             <Card
-                variant="default"
+                variant="horizontal-lines-sm"
                 size="lg"
             >
                 <h2 className={styles.header}>HEADER</h2>
