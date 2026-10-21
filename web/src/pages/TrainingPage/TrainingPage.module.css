@@ -1,0 +1,134 @@
+.layout {
+    position: relative;
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 200px;
+    border: 1px solid gray;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+
+    transition: 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+    transform: translateY(-4px);
+}
+
+.circlePadding {
+    padding: 20px;
+}
+
+.loadingCircle {
+    width: 25px;
+    height: 25px;
+    animation: spin 3s ease-in-out infinite;
+}
+
+.loadingCircle::before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    width: 25px;
+    border: 2px solid white;
+    border-left: 2px solid gray;
+    border-radius: 100%;
+    height: 25px;
+}
+
+.buttonPadding {
+    padding: 20px;
+    border: none;
+}
+
+.buttonPulse {
+    position: relative;
+    border: none;
+    background: inherit;
+
+}
+
+
+.buttonPulse::before {
+    content: "";
+    inset: -10px;
+    position: absolute;
+    box-sizing: border-box;
+    border-radius: 999px;
+    border: 1px solid black;
+    pointer-events: none;
+    animation: expand 2s linear infinite;
+}
+
+.menuContainer {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+}
+
+.menu {
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    opacity: 0;
+    transform: translateX(-20px);
+    visibility: hidden;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        visibility 0s linear 0.2s;
+}
+
+.clicked {
+    opacity: 1;
+    transform: translateX(0);
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+
+
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes expand {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.25);
+        opacity: 0.5
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}

@@ -7,9 +7,11 @@ public class LifeHubDbContext(DbContextOptions<LifeHubDbContext> options)
     : DbContext(options)
 {
     public DbSet<WeightEntry> WeightEntries { get; set; }
+    public DbSet<HourEntry> HourEntries { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<WeightEntry>().HasQueryFilter(entry => !entry.IsDeleted);
+        modelBuilder.Entity<HourEntry>().HasQueryFilter(entry => !entry.IsDeleted);
     }
 }
