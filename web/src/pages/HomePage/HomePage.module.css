@@ -16,3 +16,76 @@
     gap: var(--padding-sm);
     padding: var(--padding-lg);
 }
+
+.animations {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    min-height: 160px;
+}
+
+.animations>button+button {
+    margin-left: -1px;
+}
+
+.stairOne {
+    --stair-height: 20px;
+}
+
+.stairTwo {
+    --stair-height: 40px;
+}
+
+.stairThree {
+    --stair-height: 60px;
+}
+
+.stairFour {
+    --stair-height: 80px;
+}
+
+.stairOne,
+.stairTwo,
+.stairThree,
+.stairFour {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid black;
+    background: var(--color-surface);
+    color: var(--color-text);
+    font: inherit;
+    cursor: pointer;
+    transition: height 1s ease;
+}
+
+.loaded>button {
+    height: var(--stair-height);
+}
+
+.loaded>button:hover,
+.loaded>button:focus-visible {
+    height: calc(var(--stair-height) * 2);
+}
+
+.animations>button:focus-visible {
+    outline: 2px solid var(--color-text);
+    outline-offset: 2px;
+    position: relative;
+    z-index: 1;
+}
+
+.animations>button[aria-pressed="true"] {
+    background: var(--color-blue);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animations>button {
+        transition: none;
+    }
+}

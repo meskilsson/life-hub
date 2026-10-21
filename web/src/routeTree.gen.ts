@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AnimationsRouteImport } from './routes/animations'
 import { Route as TrainingRouteImport } from './routes/training'
 import { Route as WeightRouteImport } from './routes/weight'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnimationsRoute = AnimationsRouteImport.update({
+  id: '/animations',
+  path: '/animations',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TrainingRoute = TrainingRouteImport.update({
@@ -31,30 +37,34 @@ const WeightRoute = WeightRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/animations': typeof AnimationsRoute
   '/training': typeof TrainingRoute
   '/weight': typeof WeightRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/animations': typeof AnimationsRoute
   '/training': typeof TrainingRoute
   '/weight': typeof WeightRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/animations': typeof AnimationsRoute
   '/training': typeof TrainingRoute
   '/weight': typeof WeightRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/training' | '/weight'
+  fullPaths: '/' | '/animations' | '/training' | '/weight'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/training' | '/weight'
-  id: '__root__' | '/' | '/training' | '/weight'
+  to: '/' | '/animations' | '/training' | '/weight'
+  id: '__root__' | '/' | '/animations' | '/training' | '/weight'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AnimationsRoute: typeof AnimationsRoute
   TrainingRoute: typeof TrainingRoute
   WeightRoute: typeof WeightRoute
 }
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/animations': {
+      id: '/animations'
+      path: '/animations'
+      fullPath: '/animations'
+      preLoaderRoute: typeof AnimationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/training': {
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AnimationsRoute: AnimationsRoute,
   TrainingRoute: TrainingRoute,
   WeightRoute: WeightRoute,
 }
