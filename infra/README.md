@@ -1,4 +1,4 @@
-# Lokal backend med Docker
+﻿# Lokal backend med Docker
 
 Kör från repots rot. Stoppa först ett eventuellt lokalt `dotnet run` med Ctrl+C,
 eftersom både det och Docker använder port 5209.
@@ -9,14 +9,10 @@ docker compose -f infra/docker-compose.yml up -d --build
 
 API: http://localhost:5209/api/WeightEntries
 
-Frontend körs separat med Vite och använder:
-
-```env
-VITE_API_URL=http://localhost:5209
-```
+Den tidigare React-frontenden har tagits bort. En ny Flutter-frontend ska byggas och ansluta till API:et på http://localhost:5209.
 
 CORS-policyn i `backend/LifeHub.Api/Program.cs` tillåter frontend på
-http://localhost:5173.
+http://localhost:5173. Använd samma origin för Flutter-utvecklingen eller uppdatera CORS-policyn när den nya frontenden konfigureras.
 
 API-containern ansluter till `postgres:5432`. Från datorn når du databasen på
 `localhost:5434`. Befintliga data ligger kvar i volymen `postgres_data`.
