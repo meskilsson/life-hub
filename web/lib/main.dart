@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:life_hub/routing/router.dart';
 
+import 'ui/core/theme/app_theme.dart';
+
 import 'ui/app_shell.dart';
 
 void main() {
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Life Hub',
-      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
+      theme: AppTheme.light,
       home: AppShell(),
       debugShowCheckedModeBanner: false,
       onGenerateRoute: AppRouter.onGenerateRoute,

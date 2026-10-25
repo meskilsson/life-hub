@@ -18,6 +18,7 @@ class _WeightPageState extends State<WeightPage> {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: AppBar(title: const Text('Weight')),
       body: Padding(
@@ -31,10 +32,14 @@ class _WeightPageState extends State<WeightPage> {
                 decimal: true,
               ),
               decoration: const InputDecoration(
-                labelText: "Weight",
-                suffixText: "kg",
-                border: OutlineInputBorder(),
+                labelText: 'Weight',
+                suffixText: 'kg',
+                contentPadding: EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 24,
+                ),
               ),
+              style: TextStyle(color: colors.onSurface),
             ),
             const SizedBox(height: 16),
             ElevatedButton(
