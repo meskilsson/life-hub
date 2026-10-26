@@ -3,27 +3,29 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
 class AppTheme {
+  static final _colorScheme = ColorScheme.fromSeed(seedColor: AppColors.primary)
+      .copyWith(
+        primary: AppColors.primary,
+        onPrimary: Colors.black,
+        secondary: AppColors.secondary,
+        onSecondary: Colors.black,
+        surface: Colors.white,
+        onSurface: const Color(0xFF171717),
+        onSurfaceVariant: const Color(0xFF525252),
+        outline: const Color(0xFF737373),
+        outlineVariant: const Color(0xFFE5E5E5),
+      );
+
   static final light = ThemeData(
     useMaterial3: true,
+    colorScheme: _colorScheme,
 
-    colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary).copyWith(
-      primary: AppColors.primary,
-      onPrimary: Colors.black,
-      secondary: AppColors.secondary,
-      onSecondary: Colors.black,
-      surface: Colors.white,
-      onSurface: const Color(0xFF171717),
-      onSurfaceVariant: const Color(0xFF525252),
-      outline: const Color(0xFF737373),
-      outlineVariant: const Color(0xFFE5E5E5),
-    ),
-
-    scaffoldBackgroundColor: const Color(0xFFF5F5F5),
+    scaffoldBackgroundColor: _colorScheme.secondary,
 
     // Top navigation
-    appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.white,
-      foregroundColor: Color(0xFF171717),
+    appBarTheme: AppBarTheme(
+      backgroundColor: _colorScheme.primary,
+      foregroundColor: _colorScheme.onPrimary,
       surfaceTintColor: Colors.transparent,
       elevation: 0,
       scrolledUnderElevation: 0,

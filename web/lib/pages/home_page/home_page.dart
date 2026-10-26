@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:life_hub/routing/router.dart';
+
+import '../../ui/core/widgets/cards/dashboard_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -7,22 +8,47 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('HomePage')),
       body: Center(
-        child: Column(
+        child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed(AppRouter.weight);
-              },
-              child: const Text('Weight'),
+            SelectionArea(
+              child: DashboardCard(
+                title: 'Polar bear',
+                widget: Column(
+                  children: [
+                    SizedBox(height: 12),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(5),
+                      child: Image(
+                        image: AssetImage('assets/images/polarbear.png'),
+                        width: 200,
+                        height: 150,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed(AppRouter.sleepHours);
-              },
-              child: const Text('Sleep hours'),
+            SelectionArea(
+              child: DashboardCard(
+                title: 'Mar bear',
+                widget: Column(
+                  children: [
+                    SizedBox(height: 12),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(5),
+                      child: Image(
+                        image: AssetImage('assets/images/bearlol.png'),
+                        width: 200,
+                        height: 150,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),

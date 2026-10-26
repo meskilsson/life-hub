@@ -20,12 +20,13 @@ class _WeightPageState extends State<WeightPage> {
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
     return Scaffold(
-      appBar: AppBar(title: const Text('Weight')),
       body: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Text('Weight', style: Theme.of(context).textTheme.headlineMedium),
+            const SizedBox(height: 24),
             TextField(
               controller: _weightController,
               keyboardType: const TextInputType.numberWithOptions(
