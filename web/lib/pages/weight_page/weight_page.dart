@@ -113,7 +113,7 @@ class _WeightPageState extends State<WeightPage> {
                     title: 'Vikt',
                     variant: CardVariant.standard,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    widget: Expanded(
+                    child: Expanded(
                       child: Column(
                         children: [
                           Row(

@@ -18,7 +18,7 @@ class WeightCard extends StatelessWidget {
       child: BaseCard(
         variant: CardVariant.secondary,
         crossAxisAlignment: CrossAxisAlignment.start,
-        widget: Column(
+        child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

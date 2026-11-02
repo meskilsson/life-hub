@@ -5,7 +5,8 @@ enum CardVariant { standard, primary, secondary, image, ghost, danger }
 class BaseCard extends StatelessWidget {
   const BaseCard({
     super.key,
-    this.widget,
+    this.child,
+    this.children = const [],
     this.title,
     this.variant = CardVariant.standard,
     this.onTap,
@@ -13,7 +14,8 @@ class BaseCard extends StatelessWidget {
     this.crossAxisAlignment = CrossAxisAlignment.start,
   });
 
-  final Widget? widget;
+  final Widget? child;
+  final List<Widget> children;
   final String? title;
   final CardVariant variant;
   final VoidCallback? onTap;
@@ -67,9 +69,11 @@ class BaseCard extends StatelessWidget {
                       style: Theme.of(context).textTheme.titleLarge
                           ?.copyWith(color: foregroundColor),
                     ),
-                    if (widget != null) const SizedBox(height: 12),
+                    if (child != null || children.isNotEmpty)
+                      const SizedBox(height: 12),
                   ],
-                  ?widget,
+                  ?child,
+                  ...children,
                 ],
               ),
             ),

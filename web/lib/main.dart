@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:life_hub/pages/animation_demo_page.dart';
 import 'package:life_hub/routing/router.dart';
 
 import 'ui/core/theme/app_theme.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Life Hub',
       theme: AppTheme.light,
-      home: AppShell(),
+      home: const AnimationDemoPage(),
       debugShowCheckedModeBanner: false,
       onGenerateRoute: AppRouter.onGenerateRoute,
     );
