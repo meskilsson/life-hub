@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './animated_menu.dart';
+
 class AnimationDemoPage extends StatefulWidget {
   const AnimationDemoPage({super.key});
 
@@ -15,6 +17,9 @@ class _AnimationDemoPageState extends State<AnimationDemoPage> {
   bool _isSwitched = false;
   bool _showDetails = false;
   bool _isOnRight = false;
+  double _targetWeight = 70;
+  bool _extraAir = false;
+  bool _isPaused = false;
 
   @override
   Widget build(BuildContext context) {
@@ -189,28 +194,125 @@ class _AnimationDemoPageState extends State<AnimationDemoPage> {
                     _isOnRight = !_isOnRight;
                   });
                 },
-                child: Container(
-                  width: 300,
+                child: AnimatedContainer(
+                  duration: Duration(milliseconds: 400),
+                  curve: Curves.easeInOut,
+                  width: 200,
                   height: 200,
                   padding: EdgeInsets.all(8),
-                  color: Colors.red,
+                  color: _isOnRight ? Colors.green : Colors.grey,
                   child: AnimatedAlign(
                     alignment: _isOnRight
-                        ? Alignment.bottomRight
+                        ? Alignment.centerRight
                         : Alignment.centerLeft,
                     duration: Duration(milliseconds: 400),
                     curve: Curves.easeInOut,
-                    child: Container(
+                    child: AnimatedContainer(
+                      duration: Duration(milliseconds: 400),
+                      curve: Curves.linear,
                       width: 48,
                       height: 48,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.indigo,
                       ),
+                      child: AnimatedSwitcher(
+                        duration: Duration(milliseconds: 400),
+                        switchInCurve: Curves.linear,
+                        switchOutCurve: Curves.linear,
+                        transitionBuilder: (child, animation) {
+                          return ScaleTransition(
+                            scale: animation,
+                            child: child,
+                          );
+                        },
+                        child: Icon(
+                          key: ValueKey(_isOnRight),
+                          _isOnRight ? Icons.check : Icons.close,
+                        ),
+                      ),
                     ),
                   ),
                 ),
               ),
+
+              Row(
+                children: [
+                  TweenAnimationBuilder<double>(
+                    tween: Tween<double>(begin: 70, end: _targetWeight),
+                    duration: const Duration(milliseconds: 800),
+                    builder: (context, value, child) {
+                      return Text('${value.toStringAsFixed(1)}');
+                    },
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        _targetWeight += 5;
+                      });
+                    },
+                    child: const Text('Öka med 5'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        _targetWeight -= 5;
+                      });
+                    },
+                    child: const Text('Minska med 5'),
+                  ),
+                ],
+              ),
+
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _extraAir = !_extraAir;
+                  });
+                },
+                child: Container(
+                  width: 200,
+                  color: Colors.lightBlue,
+                  child: AnimatedPadding(
+                    padding: _extraAir
+                        ? EdgeInsets.symmetric(horizontal: 40, vertical: 40)
+                        : EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                    duration: Duration(milliseconds: 400),
+                    curve: Curves.easeInOut,
+                    child: Text('Det här är en text'),
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _isPaused = !_isPaused;
+                  });
+                },
+                child: AnimatedContainer(
+                  duration: Duration(milliseconds: 400),
+                  curve: Curves.easeInOut,
+                  color: _isPaused ? Colors.grey : Colors.green,
+                  child: AnimatedPadding(
+                    duration: Duration(milliseconds: 400),
+                    padding: _isPaused
+                        ? EdgeInsets.symmetric(horizontal: 200, vertical: 100)
+                        : EdgeInsets.symmetric(horizontal: 100, vertical: 200),
+                    child: AnimatedSwitcher(
+                      duration: Duration(milliseconds: 400),
+                      child: Row(
+                        key: ValueKey(_isPaused),
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(_isPaused ? 'Pausad' : 'Aktiv'),
+                          Icon(_isPaused ? Icons.heart_broken : Icons.favorite),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              AnimatedMenu(),
             ],
           ),
         ),

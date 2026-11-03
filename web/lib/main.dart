@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:life_hub/pages/animation_demo_page.dart';
+import 'package:life_hub/pages/animation_pages/animation_demo_page.dart';
 import 'package:life_hub/routing/router.dart';
 
 import 'ui/core/theme/app_theme.dart';
